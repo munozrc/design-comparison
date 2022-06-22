@@ -1,17 +1,30 @@
-import { setupCounter } from './counter'
-
 import './styles.css'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <h1>Design Comparison</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+const container: HTMLDivElement | null = document.querySelector('#container')
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+let width: number
+let offsetLeft: number
+let isDown: boolean = false
+
+container?.addEventListener('mousedown', (e) => {
+  width = container.offsetWidth
+  offsetLeft = container.offsetLeft
+  isDown = true
+  updateDragger(e)
+})
+
+container?.addEventListener('mouseup', () => {
+  isDown = false
+})
+
+container?.addEventListener('mousemove', (e) => {
+  updateDragger(e)
+})
+
+function updateDragger (e: MouseEvent) {
+  if (!isDown) return
+  if (e.pageX >= offsetLeft && e.pageX <= (offsetLeft + width)) {
+    const value = e.pageX - offsetLeft - 3
+    container?.style.setProperty('--percent', value + 'px')
+  }
+}
