@@ -38,6 +38,7 @@ body {
   height: 500px;
   position: relative;
   overflow: hidden;
+  user-select: none;
 }
 
 #solution {
@@ -45,11 +46,13 @@ body {
   position: absolute;
   clip-path: inset(0 calc(100% - var(--percent)) 0 0);
   z-index: 2;
+  pointer-events: none;
 }
 
 #design {
   display: block;
   position: absolute;
+  pointer-events: none;
 }
 
 #separator {
@@ -58,4 +61,5 @@ body {
   height: 100%;
   left: var(--percent);
   z-index: 3;
+  cursor: e-resize;
 }
