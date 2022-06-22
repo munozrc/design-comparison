@@ -22,8 +22,7 @@ container?.addEventListener('mousemove', (e) => {
 })
 
 function updateDragger (e: MouseEvent) {
-  if (!isDown) return
-  if (e.pageX >= offsetLeft && e.pageX <= (offsetLeft + width)) {
+  if (isDown && e.pageX >= offsetLeft && e.pageX <= (offsetLeft + width)) {
     const value = e.pageX - offsetLeft - 3
     container?.style.setProperty('--percent', value + 'px')
   }
