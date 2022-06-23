@@ -63,3 +63,18 @@ body {
   z-index: 3;
   cursor: e-resize;
 }
+
+#separator::after {
+  content: '◀ ▶';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: rgb(237, 44, 73);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+}
