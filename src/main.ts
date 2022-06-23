@@ -13,11 +13,11 @@ container?.addEventListener('mousedown', (e) => {
   updateDragger(e)
 })
 
-container?.addEventListener('mouseup', () => {
+document.addEventListener('mouseup', () => {
   isDown = false
 })
 
-container?.addEventListener('mousemove', (e) => {
+document.addEventListener('mousemove', (e) => {
   updateDragger(e)
 })
 
