@@ -37,14 +37,13 @@ body {
   border: none;
   pointer-events: none;
   transform-origin: 0 0;
+  clip-path: inset(0 calc(100% - var(--percent)) 0 0);
 }
 
 #design {
   width: 100%;
   display: block;
   pointer-events: none;
-  clip-path: inset(0 calc(100% - var(--percent)) 0 0);
-  z-index: 2;
 }
 
 #separator {
