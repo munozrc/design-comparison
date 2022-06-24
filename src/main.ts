@@ -21,6 +21,8 @@ document.addEventListener('mousemove', (e) => {
   updateDragger(e)
 })
 
+window.addEventListener('resize', init)
+
 function updateDragger (e: MouseEvent) {
   if (isDown && e.pageX >= offsetLeft && e.pageX <= (offsetLeft + width)) {
     const value = (e.pageX - offsetLeft - 3) / width * 100
@@ -39,8 +41,6 @@ function init () {
   solution.style.transform = `scale(${scaleX}, ${scaleY})`
   solution.style.width = naturalWidth + 'px'
   solution.style.height = naturalHeight + 'px'
-
-  console.log({ naturalWidth, naturalHeight })
 }
 
 init()
