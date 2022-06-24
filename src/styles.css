@@ -1,61 +1,54 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-
   --percent: 50%;
 }
 
-body {
+* {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-size: 16px;
   background-color: rgb(250, 250, 250);
 }
 
 #app {
+  width: 100%;
+  height: 100%;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
 #container {
-  width: 900px;
-  height: 500px;
+  width: 100%;
   position: relative;
   overflow: hidden;
   user-select: none;
 }
 
 #solution {
-  display: block;
   position: absolute;
-  clip-path: inset(0 calc(100% - var(--percent)) 0 0);
-  z-index: 2;
+  display: block;
+  border: none;
   pointer-events: none;
+  transform-origin: 0 0;
 }
 
 #design {
+  width: 100%;
   display: block;
-  position: absolute;
   pointer-events: none;
+  clip-path: inset(0 calc(100% - var(--percent)) 0 0);
+  z-index: 2;
 }
 
 #separator {
+  top: 0;
   border: 2px solid white;
   position: absolute;
   height: 100%;
@@ -77,4 +70,5 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   font-size: 12px;
+  color: white;
 }
