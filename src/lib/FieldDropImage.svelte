@@ -2,19 +2,29 @@
   import UploadIcon from '../icons/Upload.svelte'
 
   function handleDrop (event) {
+    event.stopPropagation()
     event.preventDefault()
-    console.log({ event })
+
+    const fileList = event.dataTransfer.files
+    console.log({ fileList })
   }
 
   function handleDragOver (event) {
+    event.stopPropagation()
     event.preventDefault()
+    event.dataTransfer.dropEffect = 'copy'
+  }
+
+  function handleChange (event) {
+    const fileList = event.target.files
+    console.log(fileList)
   }
 </script>
 
 <div class="wrapper" on:drop={handleDrop} on:dragover={handleDragOver}>
   <div class="container">
     <UploadIcon size="62px" color="#92b0e7"/>
-    <input type="file" id="file" />
+    <input type="file" id="file" on:change={handleChange} accept="image/*"/>
     <label for="file">
       <strong>Choose a file</strong>
       <span> or drag it here</span>
@@ -47,7 +57,12 @@
   }
 
   strong {
-    color: #101010;
+    color: #3072ee;
+    transition: color 0.2s ease-in;
+  }
+
+  strong:hover {
+    color: #0355ee;
   }
 
   span {
