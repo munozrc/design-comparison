@@ -22,8 +22,12 @@
   }
 
   function updateSize () {
-    const { width, naturalWidth, naturalHeight } = designEle
-    solutionEle.style.transform = `scale(${width / naturalWidth})`
+    const { width, height, naturalWidth, naturalHeight } = designEle
+  
+    const scaleX = width / naturalWidth
+    const scaleY = height / naturalHeight
+
+    solutionEle.style.transform = `scale(${scaleX}, ${scaleY})`
     solutionEle.style.width = naturalWidth + 'px'
     solutionEle.style.height = naturalHeight + 'px'
   }
@@ -47,7 +51,7 @@
 />
 
 <div class="wrapper" bind:this={wrapperEle} on:mousedown={handleMouseDown}>
-  <iframe src={solution} bind:this={solutionEle} title="solution" />
+  <iframe src={solution} bind:this={solutionEle} title="solution" on:load={updateSize}/>
   <div class="separator" />
   <img src={design} bind:this={designEle} alt="design" />
 </div>
