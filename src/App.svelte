@@ -72,4 +72,23 @@
     margin: 0 auto;
     padding: 2rem;
   }
+
+  button {
+    color: #fafafa;
+    background: rgb(0, 143, 253);
+    padding: 14px 26px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 32px;
+    transition: background-color 0.15s ease 0s, box-shadow 0.15s ease 0s;
+    box-shadow: rgb(12 20 66 / 10%) 0px 2px 4px, rgb(12 20 66 / 6%) 0px 10px 40px, rgb(12 20 66 / 10%) 0px -1px 2px inset;
+    outline: none;
+    user-select: none;
+    text-align: center;
+    border: none;
+  }
+
+  button:hover {
+    background: rgb(35, 159, 253);
+  }
 </style>
