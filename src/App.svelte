@@ -1,12 +1,57 @@
 <script>
   import ComparisonSlider from './lib/ComparisonSlider.svelte'
+  import FieldDropImage from './lib/FieldDropImage.svelte'
+  import InputField from './lib/InputField.svelte'
 
-  const solution = window.localStorage.getItem('solutionURL') ?? ''
-  const design = window.localStorage.getItem('designURL') ?? ''
+  let solution = window.localStorage.getItem('solutionURL') ?? ''
+  let design = window.localStorage.getItem('designURL') ?? ''
+  let show = solution !== '' || design !== ''
+
+  function handleSubmit (event) {
+    event.preventDefault()
+    if (solution !== '' || design !== '') {
+      window.localStorage.setItem('solutionURL', solution)
+      window.localStorage.setItem('designURL', design)
+      show = true
+    }
+  }
+
+  function handleKeyUp (event) {
+    const value = event.target.value
+    solution = value
+  }
+
+  function handleFile (event) {
+    const file = event.detail.data
+    design = file
+  }
+
+  function reset () {
+    window.localStorage.removeItem('solutionURL')
+    window.localStorage.removeItem('designURL')
+    solution = ''
+    design = ''
+    show = false
+  }
 </script>
 
 <main>
-  <ComparisonSlider {solution} {design} />
+  {#if (!show)}
+    <form on:submit={handleSubmit}>
+      <FieldDropImage on:file={handleFile}/>
+      <InputField 
+        type="url"
+        placeholder="http://localhost:300"
+        label="Ingresa URL de tu proyecto"
+        value={solution}
+        on:keyup={handleKeyUp}
+      />
+      <button>Comparar</button>
+    </form>
+  {:else}
+    <ComparisonSlider {solution} {design} />
+    <button on:click={reset}>Atras</button>
+  {/if}
 </main>
 
 <style>
