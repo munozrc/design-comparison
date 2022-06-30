@@ -71,6 +71,7 @@
     border: none;
     pointer-events: none;
     transform-origin: 0 0;
+    background-color: #fff;
     clip-path: inset(0 calc(100% - var(--percent)) 0 0);
   }
 
@@ -88,6 +89,7 @@
     left: var(--percent);
     z-index: 3;
     cursor: e-resize;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 
   .separator::after {
