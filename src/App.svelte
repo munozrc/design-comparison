@@ -1,55 +1,53 @@
 <script>
+  import { clearAllDataToLocalStorage, getDataFromLocalStorage, setDataToLocalStorage } from './utils'
   import ComparisonSlider from './lib/ComparisonSlider.svelte'
   import FieldDropImage from './lib/FieldDropImage.svelte'
   import InputField from './lib/InputField.svelte'
 
-  let solution = window.localStorage.getItem('solutionURL') ?? ''
-  let design = window.localStorage.getItem('designURL') ?? ''
-  let show = solution !== '' || design !== ''
+  let solutionSource = getDataFromLocalStorage('solution', '')
+  let designSource = getDataFromLocalStorage('design', '')
+  let view = getDataFromLocalStorage('view', 'CONFIG_VIEW')
 
   function handleSubmit (event) {
     event.preventDefault()
-    if (solution !== '' || design !== '') {
-      window.localStorage.setItem('solutionURL', solution)
-      window.localStorage.setItem('designURL', design)
-      show = true
+    if (solutionSource !== '' && designSource !== '') {
+      view = setDataToLocalStorage('view', 'COMPARISON_VIEW')
     }
   }
 
   function handleKeyUp (event) {
-    const value = event.target.value
-    solution = value
+    const value = event.target.value.trim()
+    solutionSource = setDataToLocalStorage('solution', value)
   }
 
   function handleFile (event) {
     const file = event.detail.data
-    design = file
+    designSource = setDataToLocalStorage('design', file)
   }
 
   function reset () {
-    window.localStorage.removeItem('solutionURL')
-    window.localStorage.removeItem('designURL')
-    solution = ''
-    design = ''
-    show = false
+    clearAllDataToLocalStorage()
+    solutionSource = ''
+    designSource = ''
+    view = 'CONFIG_VIEW'
   }
 </script>
 
 <main>
-  {#if (!show)}
+  {#if (view === 'CONFIG_VIEW')}
     <form on:submit={handleSubmit}>
       <FieldDropImage on:file={handleFile}/>
       <InputField 
         type="url"
         placeholder="http://localhost:300"
         label="Ingresa URL de tu proyecto"
-        value={solution}
+        value={solutionSource}
         on:keyup={handleKeyUp}
       />
       <button>Comparar</button>
     </form>
   {:else}
-    <ComparisonSlider {solution} {design} />
+    <ComparisonSlider {solutionSource} {designSource} />
     <button on:click={reset}>Atras</button>
   {/if}
 </main>
