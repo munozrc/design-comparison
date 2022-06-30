@@ -1,8 +1,8 @@
 <script>
   import { onMount } from 'svelte'
   
-  export let solution
-  export let design
+  export let solutionSource
+  export let designSource
 
   let width = 0
   let offsetLeft = 0
@@ -51,9 +51,9 @@
 />
 
 <div class="wrapper" bind:this={wrapperEle} on:mousedown={handleMouseDown}>
-  <iframe src={solution} bind:this={solutionEle} title="solution" on:load={updateSize}/>
+  <iframe src={solutionSource} bind:this={solutionEle} title="solution" on:load={updateSize}/>
   <div class="separator" />
-  <img src={design} bind:this={designEle} alt="design" />
+  <img src={designSource} bind:this={designEle} alt="design" />
 </div>
 
 <style>
