@@ -39,7 +39,7 @@
       <FieldDropImage on:file={handleFile}/>
       <InputField 
         type="url"
-        placeholder="http://localhost:300"
+        placeholder="http://localhost:3000"
         label="Ingresa URL de tu proyecto"
         value={solutionSource}
         on:keyup={handleKeyUp}
