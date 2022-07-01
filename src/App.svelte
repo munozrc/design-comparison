@@ -35,17 +35,26 @@
 
 <main>
   {#if (view === 'CONFIG_VIEW')}
-    <form on:submit={handleSubmit}>
-      <FieldDropImage on:file={handleFile}/>
-      <InputField 
-        type="url"
-        placeholder="http://localhost:3000"
-        label="Ingresa URL de tu proyecto"
-        value={solutionSource}
-        on:keyup={handleKeyUp}
-      />
-      <button>Comparar</button>
-    </form>
+    <div class="wrapper">
+      <header>
+        <h1>
+          <span>Design</span>
+          <span>Comparison</span>
+        </h1>
+        <p>It allows you to compare your relationship with the designs in desktop and mobile view.</p>
+      </header>
+      <form on:submit={handleSubmit}>
+        <FieldDropImage on:file={handleFile}/>
+        <InputField 
+          type="url"
+          placeholder="http://localhost:3000"
+          label="Ingresa URL de tu proyecto"
+          value={solutionSource}
+          on:keyup={handleKeyUp}
+        />
+        <button>Siguiente</button>
+      </form>
+    </div>
   {:else}
     <ComparisonSlider {solutionSource} {designSource} />
     <button on:click={reset}>Atras</button>
@@ -71,6 +80,36 @@
     max-width: 1280px;
     margin: 0 auto;
     padding: 2rem;
+  }
+
+  .wrapper,
+  header,
+  h1 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wrapper {
+    justify-content: center;
+    gap: 50px;
+    margin-top: 50px;
+  }
+
+  header {
+    gap: 20px;
+  }
+
+  h1 {
+    font-size: 5em;
+  }
+
+  span {
+    line-height: 0.9;
+  }
+
+  p {
+    max-width: 60%;
+    font-size: 1.5em;
   }
 
   button {
