@@ -18,16 +18,16 @@
 
   input {
     appearance: none;
-    background-color: #fff;
-    border: 1px solid #eee;
+    background-color: #E6E8EB;
+    border: 2px solid #E6E8EB;
     border-radius: 6px;
     box-shadow: none;
-    caret-color: #5a5e9a;
+    caret-color: rgb(0, 143, 253);
     color: #23263b;
-    flex: 1;
-    font: inherit;
     max-width: 100%;
-    padding-left: 2.5rem;
-    margin-right: 1rem;
+    padding: 10px 24px;
+    font-size: 1.1em;
+    outline: none;
+    margin-top: 7px;
   }
 </style>
