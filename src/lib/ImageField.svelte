@@ -1,4 +1,5 @@
 <script>
+  import { createEventDispatcher } from 'svelte'
   import UploadIcon from '../icons/Upload.svelte'
   import CloseIcon from '../icons/Close.svelte'
 
@@ -8,6 +9,13 @@
   let inputRef
 
   const types = ['image/png', 'image/jpeg']
+  const dispatch = createEventDispatcher()
+  const reader = new FileReader()
+
+  $:if (files) {
+    reader.readAsDataURL(files[0])
+    reader.onload = e => dispatch('loadImage', { data: e.target.result })
+  }
 
   function handleDragOver (event) {
     event.stopPropagation()
@@ -27,6 +35,7 @@
   function resetState () {
     inputRef.value = ''
     files = undefined
+    dispatch('loadImage', { data: '' })
   }
 </script>
 
