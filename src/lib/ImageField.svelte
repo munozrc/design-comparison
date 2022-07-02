@@ -3,7 +3,7 @@
   import UploadIcon from '../icons/Upload.svelte'
   import CloseIcon from '../icons/Close.svelte'
 
-  export let label = 'Your desktop design'
+  export let label = 'Upload desktop design'
 
   let files
   let inputRef
