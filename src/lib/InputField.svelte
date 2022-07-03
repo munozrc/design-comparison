@@ -23,7 +23,7 @@
     border-radius: 6px;
     box-shadow: none;
     caret-color: rgb(0, 143, 253);
-    color: #23263b;
+    color: inherit;
     max-width: 100%;
     padding: 10px 24px;
     font-size: 1.1em;
