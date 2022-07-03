@@ -43,7 +43,6 @@
         <p>It allows you to compare your relationship with the designs in desktop and mobile view.</p>
       </header>
       <form on:submit={handleSubmit}>
-        <!-- <FieldDropImage on:file={handleFile}/> -->
         <ImageField on:loadImage={handleLoadImage}/>
         <InputField 
           type="url"
