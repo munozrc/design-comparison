@@ -1,9 +1,9 @@
 <script>
   import { clearAllDataToLocalStorage, getDataFromLocalStorage, setDataToLocalStorage } from './utils'
   import ComparisonSlider from './lib/ComparisonSlider.svelte'
-  // import FieldDropImage from './lib/FieldDropImage.svelte'
   import InputField from './lib/InputField.svelte'
   import ImageField from './lib/ImageField.svelte'
+  import Hero from './lib/Hero.svelte'
 
   let solutionSource = getDataFromLocalStorage('solution', '')
   let designSource = getDataFromLocalStorage('design', '')
@@ -37,11 +37,7 @@
 <main>
   {#if (view === 'CONFIG_VIEW')}
     <div class="wrapper">
-      <header>
-        <a href="https://github.com/munozrc" target="_blank">by <strong>@munozrc</strong></a>
-        <h1>Design Comparison</h1>
-        <p>It allows you to compare your relationship with the designs in desktop and mobile view.</p>
-      </header>
+      <Hero />
       <form on:submit={handleSubmit}>
         <ImageField on:loadImage={handleLoadImage}/>
         <InputField 
@@ -85,16 +81,14 @@
   }
 
   .wrapper,
-  header,
-  form,
-  h1 {
+  form {
     display: flex;
     flex-direction: column;
   }
 
   .wrapper {
     justify-content: center;
-    gap: 50px;
+    gap: 5rem;
     align-items: center;
     height: 100%;
   }
@@ -102,42 +96,8 @@
   form {
     width: 100%;
     max-width: 340px;
-    gap: 1.5em;
-    margin-bottom: 40px;
-  }
-
-  a {
-    text-decoration: none;
-    background-color: #fafafa;
-    padding: 10px 24px;
-    border-radius: 40px;
-    color: #383838;
-    font-size: 0.85em;
-    border: 2px solid #E6E8EB;
-    transition: box-shadow 0.3s ease-in-out;
-  }
-
-  a:hover {
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  }
-
-  header {
-    align-items: center;
-    gap: 20px;
-  }
-
-  h1 {
-    font-size: 5em;
-    background: linear-gradient(90deg,#80d0f2,#5c82ff,#c480ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  p {
-    text-align: center;
-    max-width: 60%;
-    font-size: 1.5em;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
   }
 
   button {
@@ -152,7 +112,7 @@
     user-select: none;
     text-align: center;
     border: none; 
-    font-size: 1.05em;
+    font-size: 1.05rem;
   }
 
   button:hover {
