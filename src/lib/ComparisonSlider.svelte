@@ -50,19 +50,80 @@
   on:resize={updateSize}
 />
 
-<div class="wrapper" bind:this={wrapperEle} on:mousedown={handleMouseDown}>
-  <iframe src={solutionSource} bind:this={solutionEle} title="solution" on:load={updateSize}/>
-  <div class="separator" />
-  <img src={designSource} bind:this={designEle} alt="design" />
+<div class="container" bind:this={wrapperEle}>
+  <span class="left">SOLUTION</span>
+  <span class="right">DESIGN</span>
+  <div class="wrapper" on:mousedown={handleMouseDown}>
+    <iframe src={solutionSource} bind:this={solutionEle} title="solution" on:load={updateSize}/>
+    <div class="separator" />
+    <img src={designSource} bind:this={designEle} alt="design" />
+  </div>
 </div>
 
 <style>
+  .container {
+    display: block;
+    width: 100%;
+    position: relative;
+    --percent: 50%;
+    text-align: center;
+  }
+
+  .left,
+  .right {
+    position: relative;
+    display: inline-block;
+    width: 5rem;
+    position: relative;
+    margin-bottom: 25px;
+    font-size: 0.8rem;
+  }
+
+  .left {
+    margin-right: 5rem;
+  }
+
+  .right {
+    margin-left: 5rem;
+  }
+
+  .left::before,
+  .right::before {
+    background-color: rgb(28, 32, 34);
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5rem;
+  }
+
+  .left::before {
+    left: calc(100% + 0.6rem);
+    width: 4.65rem;
+  }
+
+  .left::after {
+    background-color: rgb(28, 32, 34);
+    content: "";
+    height: 2rem;
+    position: absolute;
+    right: -5.35rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+  }
+
+  .right::before {
+    right: 100%;
+  }
+
   .wrapper {
     width: 100%;
     position: relative;
-    overflow: hidden;
     user-select: none;
-    --percent: 50%;
+    overflow: hidden;
+    z-index: 1;
   }
 
   iframe {
@@ -87,7 +148,7 @@
     position: absolute;
     height: 100%;
     left: var(--percent);
-    z-index: 3;
+    z-index: 1;
     cursor: e-resize;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
@@ -106,5 +167,48 @@
     transform: translate(-50%, -50%);
     font-size: 12px;
     color: white;
+  }
+
+  @media (min-width: 1280px) {
+
+    .left,
+    .right {
+      display: inline-block;
+      letter-spacing: 1px;
+      position: absolute;
+      top: 2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      width: auto;
+      color: rgb(28, 32, 34);
+      margin: 0;
+    }
+
+    .left {
+      right: calc(100% + 2.4rem);
+    }
+
+    .right {
+      left: calc(100% + 2.4rem);
+    }
+
+    .left::before,
+    .right::before {
+      background-color: rgb(28, 32, 34);
+      content: "";
+      height: 1px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3rem;
+    }
+
+    .left::before {
+      left: calc(100% + 0.6rem);
+    }
+
+    .right::before {
+      right: calc(100% + 0.6rem);
+    }
   }
 </style>
