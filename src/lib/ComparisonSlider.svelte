@@ -122,8 +122,8 @@
     width: 100%;
     position: relative;
     user-select: none;
-    overflow: hidden;
     z-index: 1;
+    box-shadow: rgba(99, 104, 109, 0.2) 0px 7px 29px 0px;
   }
 
   iframe {
