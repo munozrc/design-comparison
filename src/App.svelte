@@ -52,7 +52,9 @@
     </div>
   {:else}
     <ComparisonSlider {solutionSource} {designSource} />
-    <button on:click={reset}>Atras</button>
+    <div class="wrapper-options">
+      <button on:click={reset}>Back</button>
+    </div>
   {/if}
 </main>
 
@@ -74,7 +76,7 @@
   }
 
   main {
-    max-width: 1280px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 2rem;
     height: 100vh;
@@ -91,6 +93,13 @@
     gap: 5rem;
     align-items: center;
     height: 100%;
+  }
+
+  .wrapper-options {
+    width: fit-content;
+    display: flex;
+    margin-top: 1rem;
+    gap: 0.5rem;
   }
 
   form {
