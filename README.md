@@ -1,3 +1,3 @@
 # Design Comparison
 
-It allows you to compare your relationship with the designs in desktop and mobile view
+This project is based on the functionality of FrontendMentor that allows you to compare the desktop or mobile design with your solution
